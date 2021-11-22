@@ -10,7 +10,7 @@
 
     <ul id="mail_list">
         <h1>Lunghezza della mail list: {{ listLength }}</h1>
-        <li v-for="mail, i in mailList" :key="i">
+        <li v-if="mailList.length === listLength" v-for="mail, i in mailList" :key="i">
             {{ mail }}
         </li>
     </ul>

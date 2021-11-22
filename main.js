@@ -28,5 +28,3 @@ var app = new Vue ({
         }
     }
 })
-
-// while (self.mailList.length < 10){}
