@@ -1,0 +1,15 @@
+* {
+    vertical-align: middle;
+}
+
+h2 {
+    display: inline-block;
+}
+
+input {
+    height: 25px;
+}
+
+span {
+    font-size: 3em;
+}

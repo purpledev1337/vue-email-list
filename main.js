@@ -8,16 +8,35 @@
 var app = new Vue ({
     el: "#mail_list",
     data: {
-        // changeble number to set the list length
+        // changeable number to set the list length
         listLength: 10,
-        // empty objects list
-        mailList: [
-
-        ]
+        newMailLength: null,
+        // empty objects lists
+        mailList: [],
+        newMailList: []
+    },
+    methods: {
+        // at the enter key pression
+        setLength() {
+            const self = this;
+            // same mounted function
+            for (let j = 0; j < self.newMailLength; j++) {
+                axios
+                .get('https://flynn.boolean.careers/exercises/api/random/mail')
+                .then(function (generateMail) {
+                        newMail = generateMail.data.response;
+                        self.newMailList.push(newMail);
+                    })
+            }
+            // new list reset for a new input
+            self.newMailList.splice(0 , self.newMailLength + 1);
+            // input field reset
+            self.newMailLength = "";
+        }
     },
     mounted: function() {
         const self = this;
-        // in every iteration will get api data and push into self.mailList
+        // in every iteration will get api data and push into 'mailList'
         for (let i = 0; i < self.listLength; i++) {
             axios
             .get('https://flynn.boolean.careers/exercises/api/random/mail')

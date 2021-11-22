@@ -4,14 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Vue Mail List</title>
 </head>
 <body>
 
     <ul id="mail_list">
-        <h1>Lunghezza della mail list: {{ listLength }}</h1>
-        <li v-if="mailList.length === listLength" v-for="mail, i in mailList" :key="i">
+        <h1>Mail list originale: {{ mailList.length }}</h1>
+        <li v-if="mailList.length === listLength" v-for="mail, i in mailList">
             {{ mail }}
+        </li>
+        <h2>Inserisci il numero di nuove mail da generare &rightarrow;</h2>
+        <input v-model="newMailLength" placeholder="Inserisci un numero" type="text" @keyup.enter="setLength">
+        <!-- <img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/enter-key-9-775043.png"> -->
+        <span>&crarr;</span>
+        <li v-for="newmail, i in newMailList">
+            {{ newmail }}
         </li>
     </ul>
     
